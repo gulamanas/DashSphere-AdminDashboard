@@ -39,6 +39,9 @@ const Team = () => {
       field: 'accessLevel',
       headerName: 'Access Level',
       flex: 1,
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
       renderCell: ({ row: { access } }) => {
         return (
           <Box
@@ -79,12 +82,17 @@ const Team = () => {
             border: 'none',
           },
           '& .MuiDataGrid-cell': {
+            border: 'none',
+            borderBottom: 'none',
+          },
+          '& .MuiDataGrid-row': {
+            border: 'none',
             borderBottom: 'none',
           },
           '& .name-column--cell': {
             color: colors.greenAccent[300],
           },
-          '& .MuiDataGrid-columnHeaders': {
+          '& .MuiDataGrid-columnHeader': {
             backgroundColor: colors.blueAccent[700],
             borderBottom: 'none',
           },
@@ -97,6 +105,9 @@ const Team = () => {
           },
           '& .MuiCheckbox-root': {
             color: `${colors.greenAccent[200]} !important`,
+          },
+          '& .MuiDataGrid-toolbarContainer .MuiButton-text': {
+            color: `${colors.grey[100]} !important`,
           },
         }}
       >
