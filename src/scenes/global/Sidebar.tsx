@@ -81,7 +81,7 @@ const Sidebar = () => {
                 ml='15px'
               >
                 <Typography variant='h3' color={colors.grey[100]}>
-                  ADMINIS
+                  DashSphere
                 </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />
@@ -108,10 +108,10 @@ const Sidebar = () => {
                   fontWeight='bold'
                   sx={{ m: '5px 0 0 0' }}
                 >
-                  Ed Roh
+                  John Doe
                 </Typography>
                 <Typography variant='h5' color={colors.greenAccent[500]}>
-                  VP Fancy Admin
+                  VP Admin
                 </Typography>
               </Box>
             </Box>
