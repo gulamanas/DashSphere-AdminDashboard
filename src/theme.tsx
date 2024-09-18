@@ -1,5 +1,5 @@
 import { createContext, useState, useMemo } from 'react';
-import { createTheme } from '@mui/material/styles';
+import { createTheme, Theme } from '@mui/material/styles';
 
 type Mode = 'light' | 'dark';
 
@@ -204,12 +204,16 @@ export const themeSettings = (mode: Mode) => {
 };
 
 // context for color mode
-export const ColorModeContext = createContext({
+interface colorModeContextType {
+  toggleColorMode: () => void;
+}
+
+export const ColorModeContext = createContext<colorModeContextType>({
   toggleColorMode: () => {},
 });
 
-export const useMode = () => {
-  const [mode, setMode] = useState('dark');
+export const useMode = () : [Theme, colorModeContextType]=> {
+  const [mode, setMode] = useState<'light' | 'dark'>('dark');
 
   const colorMode = useMemo(
     () => ({

@@ -5,6 +5,12 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import listPlugin from '@fullcalendar/list';
 import {
+  DateSelectArg,
+  EventApi,
+  EventClickArg,
+  formatDate,
+} from '@fullcalendar/core';
+import {
   Box,
   List,
   ListItem,
@@ -14,21 +20,20 @@ import {
 } from '@mui/material';
 import Header from '../../components/Header';
 import { tokens } from '../../theme';
-import { formatDate } from '@fullcalendar/core/index.js';
 
 const Calendar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const [currentEvents, setCurrentEvents] = useState([]);
+  const [currentEvents, setCurrentEvents] = useState<EventApi[]>([]);
 
-  const handleDateClick = (selected) => {
+  const handleDateClick = (selected: DateSelectArg) => {
     const title = prompt('Please enter a new title for your event');
     const calendarApi = selected.view.calendar;
     calendarApi.unselect();
 
     if (title) {
       calendarApi.addEvent({
-        id: `${selected.dateStr}-${title}`,
+        id: `${selected.start.toISOString()}-${title}`,
         title,
         start: selected.startStr,
         end: selected.endStr,
@@ -37,7 +42,7 @@ const Calendar = () => {
     }
   };
 
-  const handleEventClick = (selected) => {
+  const handleEventClick = (selected: EventClickArg) => {
     if (
       window.confirm(
         `Are you sure you want to delete the event '${selected.event.title}'`
@@ -75,13 +80,17 @@ const Calendar = () => {
                   <ListItemText
                     primary={event.title}
                     secondary={
-                      <Typography>
-                        {formatDate(event.start, {
-                          year: 'numeric',
-                          month: 'short',
-                          day: 'numeric',
-                        })}
-                      </Typography>
+                      event.start ? (
+                        <Typography>
+                          {formatDate(event.start, {
+                            year: 'numeric',
+                            month: 'short',
+                            day: 'numeric',
+                          })}
+                        </Typography>
+                      ) : (
+                        'No Data available'
+                      )
                     }
                   />
                 </ListItem>
