@@ -2,7 +2,7 @@ export const faqs = [
   {
     question: 'How do I add a new user to the system?',
     answer:
-      'To add a new user, navigate to the "Users" section from the sidebar menu...',
+      'To add a new user, navigate to the "Profile Form" section from the sidebar menu...',
   },
   {
     question: 'How can I customize the dashboard layout?',
@@ -18,7 +18,7 @@ export const faqs = [
     question:
       'How do I generate reports from the data available on the dashboard?',
     answer:
-      'To generate reports, navigate to the "Reports" section from the main menu...',
+      'To generate reports, navigate to the "Dashboard" section and click on the "Download Reports" button...',
   },
   {
     question: 'How can I manage user roles and permissions?',
